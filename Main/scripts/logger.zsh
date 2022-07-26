@@ -17,6 +17,11 @@ mkdir "$DUNST_CACHE_DIR" 2>/dev/null
 touch "$DUNST_LOG" 2>/dev/null
 
 function create_cache() {
+  if [[ $DUNST_APP_NAME == "volume" ]]
+  then
+    exit 0
+  fi
+
   local urgency
   case "$DUNST_URGENCY" in
     "LOW"|"NORMAL"|"CRITICAL") urgency="$DUNST_URGENCY";;

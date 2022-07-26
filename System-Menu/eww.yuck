@@ -25,6 +25,10 @@
 (defpoll battery-class :interval "1s" "System-Menu/scripts/battery -c")
 ; (defpoll profiles-icon :interval "1s" "System-Menu/scripts/power-profile --icon")
 ; (defpoll profiles-mode :interval "1s" "System-Menu/scripts/power-profile --mode")
+(defpoll weather-icon :interval "20m" "Main/scripts/weather --icon")
+(defpoll weather-temp :interval "20m" "Main/scripts/weather --temp")
+(defpoll weather-desc :interval "20m" "Main/scripts/weather --stat")
+(deflisten weather-color :initial "#7aa2f7" "Main/scripts/weather --hex")
 
 
 ;; notifications
@@ -57,9 +61,9 @@
               (label :class "menu-profile-name" :text name :valign "center"))
             (box :class "right-items-box" :space-evenly "false" :spacing 10 :halign "end"
               (button :tooltip "Open Settings" :class "menu-settings" :onclick "System-Menu/scripts/launch settings" "漣")
-              (button :tooltip "Open Color Picker" :class "color-picker" :onclick "System-Menu/scripts/launch picker" "")
+              (button :tooltip "Open Color Picker" :class "color-picker" :onclick "System-Menu/scripts/launch explorer" "ﱮ")
               (button :tooltip "Exit" :class "menu-exit" :onclick "System-Menu/scripts/launch exit" "")
-              (button :tooltip "Shutdown this PC." :class "menu-power" :onclick "shutdown now" "")))
+              (button :tooltip "Shutdown this PC." :class "menu-power" :onclick "System-Menu/scripts/launch powermenu" "")))
           (box :orientation "h" :class "first-row-system" :hexpand "false" :vexpand "false"
             (box :orientation "h" :class "main-wifi-box ${network-class == "on" ? "main-wifi-box-on" : "main-wifi-box-off"}" :space-evenly "false"
               (button :class "main-wifi-button ${network-class == "on" ? "main-wifi-button-on" : "main-wifi-button-off"}" :onclick "System-Menu/scripts/network --toggle" "${network-icon}")
@@ -78,10 +82,10 @@
                 (label :class "seperator" :text "")
                 (button :class "arrow" :onclick "blueberry" "漣")))
             (box :orientation "h" :class "main-airplane-box ${airplane-icon == "" ? "main-airplane-box-on" : "main-airplane-box-off"}" :space-evenly "false"
-              (button :class "main-airplane-button ${airplane-icon == "" ? "main-airplane-button-on" : "main-airplane-button-off"}" :onclick "System-Menu/scripts/airplane --toggle" "${airplane-icon}")
+              (button :class "main-airplane-button ${airplane-icon == "" ? "main-airplane-button-on" : "main-airplane-button-off"}" :style "color: ${weather-color}":onclick "System-Menu/scripts/airplane --toggle" "${weather-icon}")
               (box :class "airplane-labels-box" :orientation "v" :space-evenly "false" :spacing 5
-                (button :halign "start" :class "airplane-label-button ${airplane-icon == "" ? "airplane-label-button-on" : "airplane-label-button-off"}" :onclick "System-Menu/scripts/airplane --toggle" "Airplane Mode")
-                (button :halign "start" :class "airplane-status-button ${airplane-icon == "" ? "airplane-status-button-on" : "airplane-status-button-off"}" :onclick "System-Menu/scripts/airplane --toggle" "${airplane-status}"))))
+                (button :halign "start" :class "airplane-label-button ${airplane-icon == "" ? "airplane-label-button-on" : "airplane-label-button-off"}" :onclick "System-Menu/scripts/airplane --toggle" "${weather-desc}")
+                (button :halign "start" :class "airplane-status-button ${airplane-icon == "" ? "airplane-status-button-on" : "airplane-status-button-off"}" :onclick "System-Menu/scripts/airplane --toggle" "${weather-temp}"))))
           (box :orientation "h" :class "second-row-system" :hexpand "false" :vexpand "false"
             (box :orientation "h" :class "main-volume-box ${volume-icon == "墳" ? "main-volume-box-on" : "main-volume-box-off"}" :space-evenly "false"
               (button :class "main-volume-button ${volume-icon == "墳" ? "main-volume-button-on" : "main-volume-button-off"}" :onclick "System-Menu/scripts/volume --toggle" "${volume-icon}")

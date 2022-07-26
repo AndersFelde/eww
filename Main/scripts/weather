@@ -8,8 +8,8 @@ cache_weather_hex=${cache_dir}/weather-hex
 cache_weather_icon=${cache_dir}/weather-icon
 
 ## Weather data
-KEY=""
-ID=""
+KEY=$(cat ~/.config/eww/Main/scripts/weather_api_key)
+ID="6453350" #Lillehammer
 UNIT="metric"	# Available options : 'metric' or 'imperial'
 
 ## Make cache dir

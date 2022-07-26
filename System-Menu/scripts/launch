@@ -4,10 +4,18 @@ if [[ $1 == "picker" ]]; then
     cd $HOME
     eww close-all
     $HOME/.scripts/color-picker
+elif [[ $1 == "powermenu" ]]; then
+    cd $HOME
+    eww close-all
+    ~/.config/rofi/powermenu/powermenu.sh
+elif [[ $1 == "explorer" ]]; then
+    cd $HOME
+    eww close-all
+    spacefm
 elif [[ $1 == "settings" ]]; then
     cd $HOME
     eww close-all
-    xfce4-settings-manager
+    code ~/.config
 elif [[ $1 == "volume" ]]; then
     cd $HOME
     eww close-all
@@ -27,5 +35,5 @@ elif [[ $1 == "exit" ]]; then
 elif [[ $1 == "wifi" ]]; then
     cd $HOME
     eww close-all
-    networkmanager_dmenu 
+    nm-connection-editor
 fi 

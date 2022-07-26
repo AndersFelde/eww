@@ -15,17 +15,17 @@ toggle() {
 
 icon() {
     if [[ "$STRENGTH" -ge "80" ]]; then
-        echo ""
+        echo " "
     elif [[ "$STRENGTH" -ge "60" ]]; then
-        echo ""
+        echo " "
     elif [[ "$STRENGTH" -ge "40" ]]; then
-        echo ""
+        echo " "
     elif [[ "$STRENGTH" -ge "20" ]]; then
-        echo ""
+        echo " "
     elif [[ "$STRENGTH" -ge "0" ]]; then
-        echo "睊"
+        echo "睊 "
     else
-        echo "睊"
+        echo "睊 "
     fi
 }
 

@@ -1,6 +1,7 @@
 * {
   all: unset;
   transition: 200ms ease-out;
+  font-family: $font-family;
 }
 
 .system-menu {
@@ -72,7 +73,6 @@
 }
 
 .seperator {
-  font-family: "JetBrainsMono Nerd Font";
   font-size: 40px;
   color: $gray;
   font-weight: bold;
@@ -193,7 +193,6 @@
 }
 
 .arrow {
-  font-family: "feather";
   font-size: 28px;
   color: $gray;
   padding-right: 10px;
@@ -210,7 +209,6 @@
 }
 
 .brightness-slider-icon {
-  font-family: "CaskaydiaCove NF";
   color: $yellow;
   font-size: 24px;
   text-shadow: 0px 0px 4px #000000;
@@ -256,7 +254,6 @@
   padding: 4px 5px 4px 5px;
   border-radius: 100px;
   font-weight: bold;
-  font-family: "feather";
 }
 
 .brightness-slider-button {
@@ -266,7 +263,6 @@
   padding: 4px 5px 4px 5px;
   border-radius: 100px;
   font-weight: bold;
-  font-family: "feather";
 }
 
 .menu-profile-items-box {
@@ -324,7 +320,6 @@
 }
 
 .battery-icon {
-  font-family: "CaskaydiaCove NF";
   color: $purple;
   font-size: 24px;
   text-shadow: 0px 0px 4px #000000;
@@ -353,11 +348,9 @@
   padding: 4px 5px 4px 5px;
   border-radius: 100px;
   font-weight: bold;
-  font-family: "CaskaydiaCove NF";
 }
 
 .battery-percentage {
-  font-family: "Sofia Pro";
   font-weight: 500;
   font-size: 22px;
 }
@@ -392,11 +385,9 @@
 .tips-toggler {
   padding: 0px 15px 0px 15px;
   font-size: 18px;
-  font-family: "JetBrainsMono Nerd Font";
 }
 
 .battery-icon-charging {
-  font-family: "JetBrainsMono Nerd Font";
   font-size: 22px;
   color: $green;
 }
@@ -424,7 +415,6 @@
 
 .main-window-box {
   background-color: $bg;
-  font-family: "CaskaydiaCove NF", "Sofia Pro", "JetBrainsMono Nerd Font", "Material Design Icons Desktop";
 }
 
 .critical-notification-circle label {
@@ -455,7 +445,6 @@
 .notification-headers-label {
   font-size: 28;
   font-weight: bold;
-  font-family: Sofia Pro;
   text-shadow: 0px 0px 10px #000000;
   padding: 0px 160px 0px 160px;
 }

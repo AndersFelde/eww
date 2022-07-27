@@ -6,12 +6,12 @@
 (defpoll bluetooth-status :interval "1s" "System-Menu/scripts/bluetooth --status")
 (defpoll bluetooth-class :interval "1s" "System-Menu/scripts/bluetooth --class")
 (defpoll bluetooth-battery :interval "1s" "System-Menu/scripts/bluetooth --battery")
-(defpoll airplane-icon :interval "1s" "System-Menu/scripts/airplane --icon")
-(defpoll airplane-status :interval "1s" "System-Menu/scripts/airplane --status")
-(defpoll dnd-status :interval "1s" "System-Menu/scripts/dnd --status")
-(defpoll dnd-icon :interval "1s" "System-Menu/scripts/dnd --icon")
-(defpoll redshift-icon :interval "1s" "[ $(pidof redshift) ] && echo '' || echo ''")
-(defpoll redshift-status :interval "1s" "[ $(pidof redshift) ] && echo 'Turned on' || echo 'Turned off'")
+; (defpoll airplane-icon :interval "1s" "System-Menu/scripts/airplane --icon")
+; (defpoll airplane-status :interval "1s" "System-Menu/scripts/airplane --status")
+; (defpoll dnd-status :interval "1s" "System-Menu/scripts/dnd --status")
+; (defpoll dnd-icon :interval "1s" "System-Menu/scripts/dnd --icon")
+; (defpoll redshift-icon :interval "1s" "[ $(pidof redshift) ] && echo '' || echo ''")
+; (defpoll redshift-status :interval "1s" "[ $(pidof redshift) ] && echo 'Turned on' || echo 'Turned off'")
 (defpoll volume-status :interval "1s" "System-Menu/scripts/volume --status")
 (defpoll volume-icon :interval "1s" "System-Menu/scripts/volume --icon")
 (defpoll image :interval "100h" "System-Menu/scripts/details --image")
@@ -33,7 +33,7 @@
 
 ;; notifications
 (deflisten notifications-cards "Main/scripts/logger.zsh subscribe")
-(defpoll notifications-crits :interval "1s" "Main/scripts/logger.zsh crits")
+; (defpoll notifications-crits :interval "1s" "Main/scripts/logger.zsh crits")
 
 ;; for sliders
 (deflisten volume "System-Menu/scripts/sliders/volume-slider --value")

@@ -87,7 +87,7 @@ function create_cache() {
 
   # pipe stdout -> pipe cat stdin (cat conCATs multiple files and sends to stdout) -> absorb stdout from cat
   # concat: "one" + "two" + "three" -> notice how the order matters i.e. "one" will be prepended
-  print '(notification-card :class "notification-card notification-card-'$urgency' notification-card-'$DUNST_APP_NAME'" :SL "'$DUNST_ID'" :L "dunstctl history-pop '$DUNST_ID'" :body "'$body'" :summary "'$summary'" :image "'$ICON_PATH'" :application "'$DUNST_APP_NAME'")' \
+  print '(notification-card :class "notification-card notification-card-'$urgency' notification-card-'$DUNST_APP_NAME'" :SL "'$DUNST_ID'" :L "dunstctl history-pop '$DUNST_ID'" :body ' "'" $body "'"' :summary "'$summary'" :image "'$ICON_PATH'" :application "'$DUNST_APP_NAME'")' \
     | cat - "$DUNST_LOG" \
     | sponge "$DUNST_LOG"
 }

@@ -75,7 +75,7 @@
 }
 
 .indicator-volume-icon-muted {
-  font-family: "IcoMoon-Free";
+  font-family: $font-family;
   font-size: 80px;
   color: $red;
   padding: 20px 0px 20px 0px;
@@ -118,7 +118,7 @@
 }
 
 .indicator-volume-icon {
-  font-family: "IcoMoon-Free";
+  font-family: $font-family;
   font-size: 110px;
   color: $fg;
   padding: 20px 0px 20px 0px;
@@ -162,7 +162,7 @@
 }
 
 .indicator-brightness-icon {
-  font-family: "Material Design Icons Desktop";
+  font-family: $font-family;
   font-size: 120px;
   color: $fg;
   padding: 20px 0px 20px 0px;

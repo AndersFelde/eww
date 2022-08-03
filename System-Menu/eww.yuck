@@ -26,9 +26,9 @@
 ; (defpoll profiles-icon :interval "1s" "System-Menu/scripts/power-profile --icon")
 ; (defpoll profiles-mode :interval "1s" "System-Menu/scripts/power-profile --mode")
 (defpoll weather :interval "20m" "Main/scripts/weather --getdata")
-(defpoll weather-icon :interval "20m" "Main/scripts/weather --icon")
-(defpoll weather-temp :interval "20m" "Main/scripts/weather --temp")
-(defpoll weather-desc :interval "20m" "Main/scripts/weather --stat")
+(defpoll weather-icon :interval "21m" "Main/scripts/weather --icon")
+(defpoll weather-temp :interval "21m" "Main/scripts/weather --temp")
+(defpoll weather-desc :interval "21m" "Main/scripts/weather --stat")
 (deflisten weather-color :initial "#7aa2f7" "Main/scripts/weather --hex")
 (defpoll gcal :interval "20m" "System-Menu/scripts/gcal --update-cache")
 (defpoll gcal-time :interval "21m" "System-Menu/scripts/gcal --time")
@@ -59,11 +59,11 @@
     (box :class "main-window-box" :orientation "h" :width 0 :hexpand "false" :vexpand "false" :space-evenly "false"
       (box :class "left-stuff-box" :space-evenly "false" :orientation "v" :halign "start"
         (box :orientation "v" :space-evenly "false" :class "main-system-box" :height 550
-          (box :orientation "h" :class "top-items-box" :space-evenly "false"
+      (box :orientation "h" :class "top-items-box" :space-evenly "false"
             (box :class "menu-profile-items-box" :space-evenly "false" :spacing 15 :halign "start"
               (box :style "background-image: url('${image}');" :class "menu-profile-image")
               (label :class "menu-profile-name" :text name :valign "center"))
-            (box :class "right-items-box" :space-evenly "false" :spacing 10 :halign "end"
+            (box :class "right-items-box" :space-evenly "false" :spacing 10
               (button :tooltip "Open Settings" :class "menu-settings" :onclick "System-Menu/scripts/launch settings" "漣")
               (button :tooltip "Open Color Picker" :class "color-picker" :onclick "System-Menu/scripts/launch explorer" "ﱮ")
               (button :tooltip "Exit" :class "menu-exit" :onclick "System-Menu/scripts/launch exit" "")
@@ -71,15 +71,15 @@
           (box :orientation "h" :class "first-row-system" :hexpand "false" :vexpand "false"
             (box :orientation "h" :class "main-wifi-box ${network-class == "on" ? "main-wifi-box-on" : "main-wifi-box-off"}" :space-evenly "false"
               (button :class "main-wifi-button ${network-class == "on" ? "main-wifi-button-on" : "main-wifi-button-off"}" :onclick "System-Menu/scripts/network --toggle" "${network-icon}")
-              (box :class "wifi-labels-box" :orientation "v" :space-evenly "false" :spacing 5
+              (box :class "wifi-labels-box" :orientation "v" :space-evenly "false" :spacing 5 :width 10
                 (button :halign "start" :class "wifi-label-button ${network-class == "on" ? "wifi-label-button-on" : "wifi-label-button-off"}" :onclick "System-Menu/scripts/network --toggle" "Wi-Fi")
                 (label :class "wifi-status-button ${network-class == "on" ? "wifi-status-button-on" : "wifi-status-button-off"}" :limit-width "10" :text "${network-status}"))
               (box :class "wifi-buttons-box" :orientation "h" :space-evenly "false"
                 (label :class "seperator" :text "")
-                (button :class "arrow" :onclick "System-Menu/scripts/launch wifi" "漣")))
+                (button :class "arrow" :onclick "System-Menu/scripts/launch wifi" "漣 ")))
             (box :orientation "h" :class "main-bluetooth-box ${bluetooth-class == "connected" ? "main-bluetooth-box-on" : "main-bluetooth-box-off"}" :space-evenly "false"
               (button :tooltip bluetooth-battery :class "main-bluetooth-button ${bluetooth-class == "connected" ? "main-bluetooth-button-on" : "main-bluetooth-button-off"}" :onclick "System-Menu/scripts/bluetooth --toggle" "${bluetooth-icon}")
-              (box :class "bluetooth-labels-box" :orientation "v" :space-evenly "false" :spacing 5
+              (box :class "bluetooth-labels-box" :orientation "v" :space-evenly "false" :spacing 5 :width 165
                 (button :halign "start" :tooltip bluetooth-battery :class "bluetooth-label-button ${bluetooth-class == "󰂯" ? "bluetooth-label-button-on" : "bluetooth-label-button-off"}" :onclick "System-Menu/scripts/bluetooth --toggle" "Bluetooth")
                 (label :halign "start" :tooltip bluetooth-battery :class "bluetooth-status-button ${bluetooth-class == "󰂯" ? "bluetooth-state-button-on" : "bluetooth-state-button-off"}" :limit-width "8" :text "${bluetooth-status}"))
               (box :class "bluetooth-buttons-box" :orientation "h" :space-evenly "false"
@@ -93,7 +93,7 @@
           (box :orientation "h" :class "second-row-system" :hexpand "false" :vexpand "false"
             (box :orientation "h" :class "main-volume-box ${volume-icon == "墳" ? "main-volume-box-on" : "main-volume-box-off"}" :space-evenly "false"
               (button :class "main-volume-button ${volume-icon == "墳" ? "main-volume-button-on" : "main-volume-button-off"}" :onclick "System-Menu/scripts/volume --toggle" "${volume-icon}")
-              (box :class "volume-labels-box" :orientation "v" :space-evenly "false" :spacing 5
+              (box :class "volume-labels-box" :orientation "v" :space-evenly "false" :spacing 5 :width 165 
                 (button :halign "start" :class "volume-label-button ${volume-icon == "墳" ? "volume-label-button-on" : "volume-label-button-off"}" :onclick "System-Menu/scripts/volume --toggle" "Sound")
                 (button :halign "start" :class "volume-status-button ${volume-icon == "墳" ? "volume-status-button-on" : "volume-status-button-off"}" :onclick "System-Menu/scripts/volume --toggle" "${volume-status}"))
               (box :class "volume-buttons-box" :orientation "h" :space-evenly "false"
@@ -109,9 +109,7 @@
               (box :class "redshift-labels-box" :orientation "v" :space-evenly "false" :spacing 5
                 (button :halign "start" :class "redshift-label-button redshift-label-button-off" :onclick "System-Menu/scripts/launch gcal" "${gcal-time}")
                 (button :halign "start" :class "redshift-status-button redshift-status-button-off" :onclick "System-Menu/scripts/launch gcal" "${gcal-event}"))
-              (box :class "redshift-buttons-box" :orientation "h" :space-evenly "false"
-                (label :class "seperator" :text "")
-                (button :class "arrow" :onclick "redshiftgui" "漣"))))
+              ))
           (box :orientation "v" :class "sliders-system" :hexpand "false" :vexpand "false" :spacing 30
             (box :orientation "h" :class "volume-slider-stuff" :space-evenly "false"
               (button :onclick "amixer set Master toggle" :class "volume-slider-icon" "${volume-slider-indicator}")
@@ -209,7 +207,7 @@
   :windowtype "normal"
   :wm-ignore true
   :monitor 0
-  :geometry (geometry :x 76 :width 100 :height 100 :y 90 :x 365)
+  :geometry (geometry :width 100 :height 100 :y 58 :x 345)
   (system))
 
 (defwindow tips

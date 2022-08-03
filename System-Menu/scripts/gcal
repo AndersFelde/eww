@@ -11,7 +11,7 @@ update_cache() {
         mkdir -p ${cache_dir}
     fi
 
-    agenda=$(gcalcli agenda --nocolor | head -n 2 | tail -n 1)
+    agenda=$(gcalcli --nocolor agenda | head -n 2 | tail -n 1)
     time=$(echo $agenda | awk '{print $1,$2,$3,$4}')
     event=$(echo $agenda | awk '{for(i=5; i<=NF; ++i) printf "%s ", $i; print ""}')
 

@@ -36,4 +36,8 @@ elif [[ $1 == "wifi" ]]; then
     cd $HOME
     eww close-all
     nm-connection-editor
+elif [[ $1 == "gcal" ]]; then
+    cd $HOME
+    eww close-all
+    alacritty --hold -e gcalcli agenda
 fi 

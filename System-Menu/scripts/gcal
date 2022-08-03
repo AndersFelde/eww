@@ -1,2 +1,31 @@
 #!/usr/bin/env bash
-gcalcli agenda | head -n 2 | tail -n 1 | awk '{for(i=5; i<=NF; ++i) printf "%s ", $i; print ""}'
+
+cache_dir="$HOME/.cache/eww/gcal"
+cache_gcal_event=${cache_dir}/gcal-event
+cache_gcal_time=${cache_dir}/gcal-time
+
+
+update_cache() {
+
+    if [[ ! -d "$cache_dir" ]]; then
+        mkdir -p ${cache_dir}
+    fi
+
+    agenda=$(gcalcli agenda --nocolor | head -n 2 | tail -n 1)
+    time=$(echo $agenda | awk '{print $1,$2,$3,$4}')
+    event=$(echo $agenda | awk '{for(i=5; i<=NF; ++i) printf "%s ", $i; print ""}')
+
+    echo $time > $cache_gcal_time
+    echo $event > $cache_gcal_event
+
+    echo "$time, $event" 
+    return
+}
+
+if [[ "$1" == "--update-cache" ]]; then
+	update_cache
+elif [[ "$1" == "--event" ]]; then
+	cat ${cache_gcal_event}
+elif [[ "$1" == "--time" ]]; then
+	cat ${cache_gcal_time}
+fi

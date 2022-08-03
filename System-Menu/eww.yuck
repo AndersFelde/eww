@@ -108,7 +108,7 @@
               (button :class "main-redshift-button main-redshift-button-off" :onclick "System-Menu/scripts/launch gcal" " ")
               (box :class "redshift-labels-box" :orientation "v" :space-evenly "false" :spacing 5
                 (button :halign "start" :class "redshift-label-button redshift-label-button-off" :onclick "System-Menu/scripts/launch gcal" "${gcal-time}")
-                (button :halign "start" :class "redshift-status-button redshift-status-button-off" :onclick "System-Menu/scripts/launch gcal" "${gcal-event}"))
+                (label :halign "start" :class "redshift-status-button redshift-status-button-off" :limit-width "15" :text "${gcal-event}"))
               ))
           (box :orientation "v" :class "sliders-system" :hexpand "false" :vexpand "false" :spacing 30
             (box :orientation "h" :class "volume-slider-stuff" :space-evenly "false"

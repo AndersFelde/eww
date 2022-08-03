@@ -7,7 +7,7 @@ if [[ $1 == "picker" ]]; then
 elif [[ $1 == "powermenu" ]]; then
     cd $HOME
     eww close-all
-    ~/.config/rofi/powermenu/powermenu.sh
+    $HOME/.config/rofi/powermenu/powermenu.sh
 elif [[ $1 == "explorer" ]]; then
     cd $HOME
     eww close-all

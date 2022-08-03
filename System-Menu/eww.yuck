@@ -65,9 +65,9 @@
               (label :class "menu-profile-name" :text name :valign "center"))
             (box :class "right-items-box" :space-evenly "false" :spacing 10
               (button :tooltip "Open Settings" :class "menu-settings" :onclick "System-Menu/scripts/launch settings" "漣")
-              (button :tooltip "Open Color Picker" :class "color-picker" :onclick "System-Menu/scripts/launch explorer" "ﱮ")
+              (button :tooltip "Open Explorer" :class "color-picker" :onclick "System-Menu/scripts/launch explorer" "ﱮ")
               (button :tooltip "Exit" :class "menu-exit" :onclick "System-Menu/scripts/launch exit" "")
-              (button :tooltip "Shutdown this PC." :class "menu-power" :onclick "System-Menu/scripts/launch powermenu" "")))
+              (button :tooltip "Enter powermenu" :class "menu-power" :onclick "System-Menu/scripts/launch powermenu" "")))
           (box :orientation "h" :class "first-row-system" :hexpand "false" :vexpand "false"
             (box :orientation "h" :class "main-wifi-box ${network-class == "on" ? "main-wifi-box-on" : "main-wifi-box-off"}" :space-evenly "false"
               (button :class "main-wifi-button ${network-class == "on" ? "main-wifi-button-on" : "main-wifi-button-off"}" :onclick "System-Menu/scripts/network --toggle" "${network-icon}")

@@ -10,8 +10,6 @@
 (defpoll airplane-status :interval "1s" "System-Menu/scripts/airplane --status")
 (defpoll dnd-status :interval "1s" "System-Menu/scripts/dnd --status")
 (defpoll dnd-icon :interval "1s" "System-Menu/scripts/dnd --icon")
-(defpoll redshift-icon :interval "1s" "[ $(pidof redshift) ] && echo '' || echo ''")
-(defpoll redshift-status :interval "1s" "[ $(pidof redshift) ] && echo 'Turned on' || echo 'Turned off'")
 (defpoll volume-status :interval "1s" "System-Menu/scripts/volume --status")
 (defpoll volume-icon :interval "1s" "System-Menu/scripts/volume --icon")
 (defpoll image :interval "100h" "System-Menu/scripts/details --image")
@@ -19,12 +17,7 @@
 (defpoll battery-icon :interval "5s" "System-Menu/scripts/battery -i")
 (defpoll battery-label :interval "5s" "System-Menu/scripts/battery -l")
 (defpoll battery-value :interval "5s" "System-Menu/scripts/battery -v")
-; (defpoll tips :interval "100h" "System-Menu/scripts/tips/tips")
-; (defpoll tips-icon :interval "1s" "System-Menu/scripts/tips/toggle-tips --icon")
-; (defpoll tips-status :interval "1s" "System-Menu/scripts/tips/toggle-tips --status")
 (defpoll battery-class :interval "1s" "System-Menu/scripts/battery -c")
-; (defpoll profiles-icon :interval "1s" "System-Menu/scripts/power-profile --icon")
-; (defpoll profiles-mode :interval "1s" "System-Menu/scripts/power-profile --mode")
 (defpoll gcal :interval "20m" "System-Menu/scripts/gcal --update-cache")
 (deflisten gcal-time :initial "None" "System-Menu/scripts/gcal --time")
 (deflisten gcal-event :initial "None" "System-Menu/scripts/gcal --event")
@@ -45,14 +38,6 @@
 (defpoll brightness :interval "0.5s" "System-Menu/scripts/sliders/brightness-slider --value")
 (defpoll brightness-slider-indicator :interval "0.5s" "System-Menu/scripts/sliders/brightness-slider --icon")
 
-;; widget
-
-; (defwidget tips []
-  ;   (box :orientation "v" :space-evenly "false" :hexpand "false" :vexpand "false"
-    ;     (box :class "tips-header-box" :space-evenly "false"
-      ;       (label :class "tips-header" :halign "start" :text "󰋼 Tips:")
-      ;       (button :class "close-tips" :onclick "eww close tips" :tooltip "Close Tips" :halign "end" "󰅙"))
-    ;     (label :class "tips-body" :halign "start" :text "${tips}")))
 
 (defwidget system []
   (box :class "main-window" :space-evenly "false" :orientation "h"

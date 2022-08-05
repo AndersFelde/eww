@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 ## Collect data
 cache_dir="$HOME/.cache/eww/weather"
@@ -8,7 +8,7 @@ cache_weather_hex=${cache_dir}/weather-hex
 cache_weather_icon=${cache_dir}/weather-icon
 
 ## Weather data
-KEY=$(cat ~/.config/eww/Main/scripts/weather_api_key)
+KEY=$(cat ~/.config/eww/System-Menu/scripts/weather_api_key)
 ID="6453350" #Lillehammer
 UNIT="metric"	# Available options : 'metric' or 'imperial'
 
@@ -20,7 +20,6 @@ fi
 ## Get data
 get_weather_data() {
 	weather=`curl -sf "http://api.openweathermap.org/data/2.5/weather?APPID="$KEY"&id="$ID"&units="$UNIT""`
-	echo ${weather}
 
 	if [ ! -z "$weather" ]; then
 		weather_temp=`echo "$weather" | jq ".main.temp" | cut -d "." -f 1`
@@ -102,17 +101,22 @@ get_weather_data() {
 		echo "-" > ${cache_weather_degree}
 		echo "#adadff" > ${tcache_weather_hex}
 	fi
+
+	 cat  $cache_weather_icon
+	 cat $cache_weather_stat
+	 cat $cache_weather_degree
+	 cat $cache_weather_hex
 }
 
 ## Execute
 if [[ "$1" == "--getdata" ]]; then
 	get_weather_data
 elif [[ "$1" == "--icon" ]]; then
-	cat ${cache_weather_icon}
+	tail -F ${cache_weather_icon}
 elif [[ "$1" == "--temp" ]]; then
-	cat ${cache_weather_degree}
+	tail -F ${cache_weather_degree}
 elif [[ "$1" == "--hex" ]]; then
 	tail -F ${cache_weather_hex}
 elif [[ "$1" == "--stat" ]]; then
-	cat ${cache_weather_stat}
+	tail -F ${cache_weather_stat}
 fi

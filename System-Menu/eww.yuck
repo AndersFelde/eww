@@ -25,14 +25,14 @@
 (defpoll battery-class :interval "1s" "System-Menu/scripts/battery -c")
 ; (defpoll profiles-icon :interval "1s" "System-Menu/scripts/power-profile --icon")
 ; (defpoll profiles-mode :interval "1s" "System-Menu/scripts/power-profile --mode")
-(defpoll weather :interval "20m" "Main/scripts/weather --getdata")
-(defpoll weather-icon :interval "21m" "Main/scripts/weather --icon")
-(defpoll weather-temp :interval "21m" "Main/scripts/weather --temp")
-(defpoll weather-desc :interval "21m" "Main/scripts/weather --stat")
-(deflisten weather-color :initial "#7aa2f7" "Main/scripts/weather --hex")
+(defpoll weather :interval "20m" "System-Menu/scripts/weather --getdata")
+(deflisten weather-icon :initial "Test" "System-Menu/scripts/weather --icon")
+(deflisten weather-temp :initial "None" "System-Menu/scripts/weather --temp")
+(deflisten weather-desc :initial "None" "System-Menu/scripts/weather --stat")
+(deflisten weather-color :initial "#7aa2f7" "System-Menu/scripts/weather --hex")
 (defpoll gcal :interval "20m" "System-Menu/scripts/gcal --update-cache")
-(defpoll gcal-time :interval "21m" "System-Menu/scripts/gcal --time")
-(defpoll gcal-event :interval "21m" "System-Menu/scripts/gcal --event")
+(deflisten gcal-time :initial "None" "System-Menu/scripts/gcal --time")
+(deflisten gcal-event :initial "None" "System-Menu/scripts/gcal --event")
 
 
 ;; notifications
@@ -40,9 +40,9 @@
 ; (defpoll notifications-crits :interval "1s" "Main/scripts/logger.zsh crits")
 
 ;; for sliders
-(deflisten volume "System-Menu/scripts/sliders/volume-slider --value")
+(defpoll volume :interval "0.5s" "System-Menu/scripts/sliders/volume-slider --value")
 (defpoll volume-slider-indicator :interval "0.5s" "System-Menu/scripts/sliders/volume-slider --icon")
-(deflisten brightness "System-Menu/scripts/sliders/brightness-slider --value")
+(defpoll brightness :interval "0.5s" "System-Menu/scripts/sliders/brightness-slider --value")
 (defpoll brightness-slider-indicator :interval "0.5s" "System-Menu/scripts/sliders/brightness-slider --icon")
 
 ;; widget

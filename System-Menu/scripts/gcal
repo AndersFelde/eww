@@ -6,7 +6,6 @@ cache_gcal_time=${cache_dir}/gcal-time
 
 
 update_cache() {
-
     if [[ ! -d "$cache_dir" ]]; then
         mkdir -p ${cache_dir}
     fi
@@ -22,10 +21,11 @@ update_cache() {
     return
 }
 
+
 if [[ "$1" == "--update-cache" ]]; then
 	update_cache
 elif [[ "$1" == "--event" ]]; then
-	cat ${cache_gcal_event}
+	tail -F ${cache_gcal_event}
 elif [[ "$1" == "--time" ]]; then
-	cat ${cache_gcal_time}
+	tail -F ${cache_gcal_time}
 fi

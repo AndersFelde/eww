@@ -14,10 +14,11 @@ update_cache() {
     time=$(echo $agenda | awk '{print $1,$2,$3,$4}')
     event=$(echo $agenda | awk '{for(i=7; i<=NF; ++i) printf "%s ", $i; print ""}')
 
-    echo $time > $cache_gcal_time
-    echo $event > $cache_gcal_event
+    # echo $time > $cache_gcal_time
+    # echo $event > $cache_gcal_event
+    # echo "$time, $event" 
 
-    echo "$time, $event" 
+	# notify-send "eww" 'Updated gcal!'
     return
 }
 

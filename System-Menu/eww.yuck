@@ -25,14 +25,14 @@
 (defpoll battery-class :interval "1s" "System-Menu/scripts/battery -c")
 ; (defpoll profiles-icon :interval "1s" "System-Menu/scripts/power-profile --icon")
 ; (defpoll profiles-mode :interval "1s" "System-Menu/scripts/power-profile --mode")
+(defpoll gcal :interval "20m" "System-Menu/scripts/gcal --update-cache")
+(deflisten gcal-time :initial "None" "System-Menu/scripts/gcal --time")
+(deflisten gcal-event :initial "None" "System-Menu/scripts/gcal --event")
 (defpoll weather :interval "20m" "System-Menu/scripts/weather --getdata")
 (deflisten weather-icon :initial "Test" "System-Menu/scripts/weather --icon")
 (deflisten weather-temp :initial "None" "System-Menu/scripts/weather --temp")
 (deflisten weather-desc :initial "None" "System-Menu/scripts/weather --stat")
 (deflisten weather-color :initial "#7aa2f7" "System-Menu/scripts/weather --hex")
-(defpoll gcal :interval "20m" "System-Menu/scripts/gcal --update-cache")
-(deflisten gcal-time :initial "None" "System-Menu/scripts/gcal --time")
-(deflisten gcal-event :initial "None" "System-Menu/scripts/gcal --event")
 
 
 ;; notifications
@@ -86,7 +86,7 @@
                 (label :class "seperator" :text "")
                 (button :class "arrow" :onclick "blueberry" "漣")))
             (box :orientation "h" :class "main-airplane-box ${airplane-icon == "" ? "main-airplane-box-on" : "main-airplane-box-off"}" :space-evenly "false"
-              (button :class "main-airplane-button ${airplane-icon == "" ? "main-airplane-button-on" : "main-airplane-button-off"}" :style "color: ${weather-color}":onclick "System-Menu/scripts/airplane --toggle" "${weather-icon}")
+              (button :class "main-airplane-button ${airplane-icon == "" ? "main-airplane-button-on" : "main-airplane-button-off"}" :style "color: ${weather-color}":onclick "System-Menu/scripts/airplane --toggle" "${weather-icon}${weather}")
               (box :class "airplane-labels-box" :orientation "v" :space-evenly "false" :spacing 5
                 (button :halign "start" :class "airplane-label-button ${airplane-icon == "" ? "airplane-label-button-on" : "airplane-label-button-off"}" :onclick "System-Menu/scripts/airplane --toggle" "${weather-desc}")
                 (button :halign "start" :class "airplane-status-button ${airplane-icon == "" ? "airplane-status-button-on" : "airplane-status-button-off"}" :onclick "System-Menu/scripts/airplane --toggle" "${weather-temp}"))))
@@ -107,7 +107,7 @@
             (box :orientation "h" :class "main-redshift-box main-redshift-box-off" :space-evenly "false"
               (button :class "main-redshift-button main-redshift-button-off" :onclick "System-Menu/scripts/launch gcal" " ")
               (box :class "redshift-labels-box" :orientation "v" :space-evenly "false" :spacing 5
-                (button :halign "start" :class "redshift-label-button redshift-label-button-off" :onclick "System-Menu/scripts/launch gcal" "${gcal-time}")
+                (button :halign "start" :class "redshift-label-button redshift-label-button-off" :onclick "System-Menu/scripts/launch gcal" "${gcal-time}${gcal}")
                 (label :halign "start" :class "redshift-status-button redshift-status-button-off" :limit-width "15" :text "${gcal-event}"))
               ))
           (box :orientation "v" :class "sliders-system" :hexpand "false" :vexpand "false" :spacing 30

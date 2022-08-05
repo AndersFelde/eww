@@ -102,10 +102,11 @@ get_weather_data() {
 		echo "#adadff" > ${tcache_weather_hex}
 	fi
 
-	 cat  $cache_weather_icon
-	 cat $cache_weather_stat
-	 cat $cache_weather_degree
-	 cat $cache_weather_hex
+	# cat  $cache_weather_icon
+	# cat $cache_weather_stat
+	# cat $cache_weather_degree
+	# cat $cache_weather_hex
+	# notify-send "eww" 'Updated weather!'
 }
 
 ## Execute

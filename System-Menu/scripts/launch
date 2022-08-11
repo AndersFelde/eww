@@ -38,4 +38,8 @@ elif [[ $1 == "gcal" ]]; then
     cd $HOME
     eww close-all
     alacritty --hold -e gcalcli agenda
+elif [[ $1 == "weather" ]]; then
+    cd $HOME
+    eww close-all
+    xdg-open 'https://www.yr.no/nb/v%C3%A6rvarsel/daglig-tabell/1-2797761/Norge/Innlandet/Lillehammer/J%C3%B8rstadmoen'
 fi 

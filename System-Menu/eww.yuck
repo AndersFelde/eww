@@ -71,10 +71,10 @@
                 (label :class "seperator" :text "")
                 (button :class "arrow" :onclick "blueberry" "漣")))
             (box :orientation "h" :class "main-airplane-box ${airplane-icon == "" ? "main-airplane-box-on" : "main-airplane-box-off"}" :space-evenly "false"
-              (button :class "main-airplane-button ${airplane-icon == "" ? "main-airplane-button-on" : "main-airplane-button-off"}" :style "color: ${weather-color}":onclick "System-Menu/scripts/airplane --toggle" "${weather-icon}${weather}")
+              (button :class "main-airplane-button ${airplane-icon == "" ? "main-airplane-button-on" : "main-airplane-button-off"}" :style "color: ${weather-color}":onclick "System-Menu/scripts/launch weather" "${weather-icon}")
               (box :class "airplane-labels-box" :orientation "v" :space-evenly "false" :spacing 5
-                (button :halign "start" :class "airplane-label-button ${airplane-icon == "" ? "airplane-label-button-on" : "airplane-label-button-off"}" :onclick "System-Menu/scripts/airplane --toggle" "${weather-desc}")
-                (button :halign "start" :class "airplane-status-button ${airplane-icon == "" ? "airplane-status-button-on" : "airplane-status-button-off"}" :onclick "System-Menu/scripts/airplane --toggle" "${weather-temp}"))))
+                (button :halign "start" :class "airplane-label-button ${airplane-icon == "" ? "airplane-label-button-on" : "airplane-label-button-off"}" :onclick "System-Menu/scripts/launch weather" "${weather-desc}")
+                (button :halign "start" :class "airplane-status-button ${airplane-icon == "" ? "airplane-status-button-on" : "airplane-status-button-off"}" :onclick "System-Menu/scripts/launch weather" "${weather-temp}"))))
           (box :orientation "h" :class "second-row-system" :hexpand "false" :vexpand "false"
             (box :orientation "h" :class "main-volume-box ${volume-icon == "墳" ? "main-volume-box-on" : "main-volume-box-off"}" :space-evenly "false"
               (button :class "main-volume-button ${volume-icon == "墳" ? "main-volume-button-on" : "main-volume-button-off"}" :onclick "System-Menu/scripts/volume --toggle" "${volume-icon}")

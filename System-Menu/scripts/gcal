@@ -9,8 +9,7 @@ update_cache() {
     if [[ ! -d "$cache_dir" ]]; then
         mkdir -p ${cache_dir}
     fi
-
-    agenda=$(gcalcli --nocolor agenda "$(date)" | head -n 2 | tail -n 1)
+    agenda=$(gcalcli --calendar="TimeEdit-Ving 75-20210801" --calendar="anderskfelde@gmail.com" --nocolor agenda "$(date)" | head -n 2 | tail -n 1)
     time=$(echo $agenda | awk '{print $1,$2,$3,$4}')
     event=$(echo $agenda | awk '{for(i=7; i<=NF; ++i) printf "%s ", $i; print ""}')
 

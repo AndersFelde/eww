@@ -18,6 +18,7 @@
 (defpoll battery-label :interval "5s" "System-Menu/scripts/battery -l")
 (defpoll battery-value :interval "5s" "System-Menu/scripts/battery -v")
 (defpoll battery-class :interval "1s" "System-Menu/scripts/battery -c")
+(defpoll battery-time :interval "1s" "System-Menu/scripts/battery -t")
 (defpoll gcal :interval "20m" "System-Menu/scripts/gcal --update-cache &")
 (deflisten gcal-time :initial "None" "System-Menu/scripts/gcal --time")
 (deflisten gcal-event :initial "None" "System-Menu/scripts/gcal --event")
@@ -118,15 +119,16 @@
               :onchange "brightnessctl --quiet s {}%")
               (button :onclick "System-Menu/scripts/launch display" :class "brightness-slider-button" "漣"))
             (box :orientation "h" :class "brightness-slider-stuff" :space-evenly "false"
-              (button :class "battery-icon" "${battery-icon}")
+              (button :class "battery-icon" :tooltip "${battery-time}" "${battery-icon}")
               (scale :class "battery-slider"
+                :tooltip "${battery-time}"
                 :orientation "h"
                 :max 100
                 :min 0
                 :value {battery-value == "" ? 0 : battery-value}
                 :width 653)
               ; :onchange "brightnessctl --quiet s {}%")
-              (label :class "battery-slider-button" :text "${battery-label}")))
+              (label :class "battery-slider-button" :tooltip "${battery-time}" :text "${battery-label}")))
           ; (box :orientation "h" :space-evenly "true" :class "bottom-items-box"
           ;   (box :orientation "h" :space-evenly "false" :class "battery-box" :halign "start"
           ;     (label :class "battery-icon ${battery-class == "" ? "battery-icon-charging" : "battery-icon-discharging"}" :text "${battery-icon}")

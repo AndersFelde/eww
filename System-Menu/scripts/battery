@@ -12,6 +12,7 @@
 
 bat=$(acpi -b)
 state=$(echo ${bat} | awk '{print $3}')
+time=$(echo $bat | awk -F ", " '{print $3}')
 
 if [[ "$state" = "Not" ]]; then
     level=$(echo ${bat} | awk '{print $5}')
@@ -79,4 +80,6 @@ elif [[ $1 = "-i" ]]; then
     icon
 elif [[ $1 = "-v" ]]; then
     echo "${level}"
+elif [[ $1 = "-t" ]]; then
+    echo $time
 fi

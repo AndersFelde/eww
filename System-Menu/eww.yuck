@@ -19,9 +19,13 @@
 (defpoll battery-value :interval "5s" "System-Menu/scripts/battery -v")
 (defpoll battery-class :interval "1s" "System-Menu/scripts/battery -c")
 (defpoll battery-time :interval "1s" "System-Menu/scripts/battery -t")
-(defpoll gcal :interval "20m" "System-Menu/scripts/gcal --update-cache &")
-(deflisten gcal-time :initial "None" "System-Menu/scripts/gcal --time")
-(deflisten gcal-event :initial "None" "System-Menu/scripts/gcal --event")
+; (defpoll gcal :interval "20m" "System-Menu/scripts/gcal --update-cache &")
+; (deflisten gcal-time :initial "None" "System-Menu/scripts/gcal --time")
+; (deflisten gcal-event :initial "None" "System-Menu/scripts/gcal --event")
+(defpoll vpn-icon :interval "1s" "System-Menu/scripts/nordvpn --icon")
+(defpoll vpn-status :interval "1s" "System-Menu/scripts/nordvpn --status")
+(defpoll vpn-class :interval "1s" "System-Menu/scripts/nordvpn --class")
+(defpoll vpn-uptime :interval "1s" "System-Menu/scripts/nordvpn --uptime")
 (defpoll weather :interval "20m" "System-Menu/scripts/weather --getdata &")
 (deflisten weather-icon :initial "Test" "System-Menu/scripts/weather --icon")
 (deflisten weather-temp :initial "None" "System-Menu/scripts/weather --temp")
@@ -90,11 +94,11 @@
               (box :class "dnd-labels-box" :orientation "v" :space-evenly "false" :spacing 5
                 (button :halign "start" :class "dnd-label-button ${dnd-icon == "" ? "dnd-label-button-on" : "dnd-label-button-off"}" :onclick "System-Menu/scripts/dnd --toggle" "Do Not Disturb")
                 (button :halign "start" :class "dnd-status-button ${dnd-icon == "" ? "dnd-state-button-on" : "dnd-state-button-off"}" :onclick "System-Menu/scripts/dnd --toggle" "${dnd-status}")))
-            (box :orientation "h" :class "main-redshift-box main-redshift-box-off" :space-evenly "false"
-              (button :class "main-redshift-button main-redshift-button-off" :onclick "System-Menu/scripts/launch gcal" " ")
+            (box :orientation "h" :class "main-redshift-box ${vpn-class == "on" ? "main-redshift-box-on" : "main-redshift-box-off"}" :space-evenly "false"
+              (button :class "main-redshift-button ${vpn-class == "on" ? "main-redshift-button-on" : "main-redshitft-button-off"}" :onclick "System-Menu/scripts/nordvpn --toggle" "${vpn-icon}")
               (box :class "redshift-labels-box" :orientation "v" :space-evenly "false" :spacing 5
-                (button :halign "start" :class "redshift-label-button redshift-label-button-off" :onclick "System-Menu/scripts/launch gcal" "${gcal-time}${gcal}")
-                (label :halign "start" :class "redshift-status-button redshift-status-button-off" :limit-width "15" :text "${gcal-event}"))
+                (button :halign "start" :class "redshift-label-button ${vpn-class == "on" ? "redshift-label-button-on" : "redshitft-label-button-off"}" :onclick "System-Menu/scripts/launch gcal" "VPN ${vpn-status}")
+                (label :halign "start" :class "redshift-status-button ${vpn-class == "on" ? "redshift-status-button-on" : "redshitft-status-button-off"}" :limit-width "15" :text "${vpn-uptime}"))
               ))
           (box :orientation "v" :class "sliders-system" :hexpand "false" :vexpand "false" :spacing 30
             (box :orientation "h" :class "volume-slider-stuff" :space-evenly "false"

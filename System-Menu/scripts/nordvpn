@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+STATUS=$(nordvpn status | grep Status | awk -F ": " '{print $2}')
+COUNTRY=$(nordvpn status | grep Country | awk -F ": " '{print $2}')
+UPTIME=$(nordvpn status | grep Uptime | awk -F ": " '{print $2}')
+
+toggle() {
+    if [[ $STATUS == "Connected" ]]; then
+        nordvpn disconnect
+    else
+        nordvpn connect
+    fi
+}
+
+icon() {
+    echo "嬨 "
+}
+
+status() {
+    if [[ $STATUS == "Connected" ]]; then
+        echo "("$COUNTRY")"
+    else
+        echo ""
+    fi
+}
+
+uptime() {
+    if [[ $STATUS == "Connected" ]]; then
+        echo $UPTIME
+    else
+        echo "Disconnected"
+    fi
+}
+
+class(){
+    if [[ $STATUS == "Connected" ]]; then
+        echo "on"
+    else
+        echo "off"
+    fi
+}
+
+class(){
+    if [[ $STATUS == "Connected" ]]; then
+        echo "on"
+    else
+        echo "off"
+    fi
+}
+
+if [[ $1 == "--toggle" ]]; then
+    toggle
+elif [[ $1 == "--icon" ]]; then
+    icon
+elif [[ $1 == "--status" ]]; then
+    status
+elif [[ $1 == "--class" ]]; then
+    class
+elif [[ $1 == "--uptime" ]]; then
+    uptime
+fi
+

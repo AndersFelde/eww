@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 STATUS=$(nordvpn status | grep Status | awk -F ": " '{print $2}')
 COUNTRY=$(nordvpn status | grep Country | awk -F ": " '{print $2}')
-UPTIME=$(nordvpn status | grep Uptime | awk -F ": " '{print $2}')
+# UPTIME=$(nordvpn status | grep Uptime | awk -F ": " '{print $2}')
+UPTIME=$(nordvpn status | grep Uptime | awk -F ": " '{print $2}' | awk -F " " '{print $1 substr($2,0,1) " " $3 substr($4,0,1) " " $5 substr($6,0,1)}')
 
 toggle() {
     if [[ $STATUS == "Connected" ]]; then

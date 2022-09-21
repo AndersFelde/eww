@@ -74,7 +74,7 @@
                 (label :halign "start" :tooltip bluetooth-battery :class "bluetooth-status-button ${bluetooth-class == "󰂯" ? "bluetooth-state-button-on" : "bluetooth-state-button-off"}" :limit-width "8" :text "${bluetooth-status}"))
               (box :class "bluetooth-buttons-box" :orientation "h" :space-evenly "false"
                 (label :class "seperator" :text "")
-                (button :class "arrow" :onclick "blueberry" "漣")))
+                (button :class "arrow" :onclick "System-Menu/scripts/launch bluetooth" "漣")))
             (box :orientation "h" :class "main-airplane-box ${airplane-icon == "" ? "main-airplane-box-on" : "main-airplane-box-off"}" :space-evenly "false"
               (button :class "main-airplane-button ${airplane-icon == "" ? "main-airplane-button-on" : "main-airplane-button-off"}" :style "color: ${weather-color}":onclick "System-Menu/scripts/launch weather" "${weather-icon}")
               (box :class "airplane-labels-box" :orientation "v" :space-evenly "false" :spacing 5

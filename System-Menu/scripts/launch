@@ -42,9 +42,8 @@ elif [[ $1 == "weather" ]]; then
     cd $HOME
     eww close-all
     xdg-open 'https://www.yr.no/nb/v%C3%A6rvarsel/daglig-tabell/1-2797761/Norge/Innlandet/Lillehammer/J%C3%B8rstadmoen'
-fi 
-elif [[ $1 == "weather" ]]; then
+elif [[ $1 == "bluetooth" ]]; then
     cd $HOME
     eww close-all
-    blueberry
+    blueberry & disown
 fi 

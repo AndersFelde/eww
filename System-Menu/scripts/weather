@@ -28,10 +28,10 @@ get_weather_data() {
 
 		#Big long if statement of doom
 		if [ "$weather_icon_code" == "50d"  ]; then
-			weather_icon=" "
+			weather_icon=""
 			weather_hex="#7aa2f7"
 		elif [ "$weather_icon_code" == "50n"  ]; then
-			weather_icon=" "
+			weather_icon=" "
 			weather_hex="#7aa2f7"
 		elif [ "$weather_icon_code" == "01d"  ]; then
 			weather_icon=" "
@@ -58,22 +58,22 @@ get_weather_data() {
 			weather_icon=" "
 			weather_hex="#7aa2f7"
 		elif [ "$weather_icon_code" == "09d"  ]; then
-			weather_icon=" "
+			weather_icon=" "
 			weather_hex="#7dcfff"
 		elif [ "$weather_icon_code" == "09n"  ]; then
-			weather_icon=" "
+			weather_icon=" "
 			weather_hex="#7dcfff"
 		elif [ "$weather_icon_code" == "10d"  ]; then
-			weather_icon=" "
+			weather_icon=" "
 			weather_hex="#7dcfff"
 		elif [ "$weather_icon_code" == "10n"  ]; then
-			weather_icon=" "
+			weather_icon=" "
 			weather_hex="#7dcfff"
 		elif [ "$weather_icon_code" == "11d"  ]; then
-			weather_icon=""
+			weather_icon=""
 			weather_hex="#ff9e64"
 		elif [ "$weather_icon_code" == "11n"  ]; then
-			weather_icon=""
+			weather_icon=""
 			weather_hex="#ff9e64"
 		elif [ "$weather_icon_code" == "13d"  ]; then
 			weather_icon=" "

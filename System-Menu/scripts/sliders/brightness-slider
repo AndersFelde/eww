@@ -5,13 +5,13 @@ icon() {
     bri=$(brightnessctl i -m | tr , " " | awk '{print $4}' | cut -c 1-2)
     
     if [[ "$bri" -gt "90" ]]; then
-        echo ""
+        echo "󰃠"
         elif [[ "$bri" -gt "50" ]]; then
-        echo ""
+        echo "󰃝"
         elif [[ "$bri" -gt "30" ]]; then
-        echo ""
+        echo "󰃟"
     else
-        echo ""
+        echo "󰃞"
     fi
 }
 

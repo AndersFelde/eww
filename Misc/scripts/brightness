@@ -13,7 +13,7 @@ if ! $killed; then
     eww open brightness-indicator
 fi
 
-eww update brightness-level=$(brightnessctl i -m | tr , " " | awk '{print $4}' | cut -c 1-2)
+eww update brightness-leveli$(brightnessctl i -m | tr , " " | awk '{print $4}' | cut -c 1-2)
 eww update brightness-hidden=false
 sleep 2
 eww update brightness-hidden=true

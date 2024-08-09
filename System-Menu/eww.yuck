@@ -1,40 +1,35 @@
-;; variables
-(defpoll network-icon :interval "1s" "System-Menu/scripts/network --icon")
-(defpoll network-status :interval "1s" "System-Menu/scripts/network --status")
-(defpoll network-class :interval "1s" "System-Menu/scripts/network --class")
-(defpoll bluetooth-icon :interval "1s" "System-Menu/scripts/bluetooth --icon")
-(defpoll bluetooth-status :interval "1s" "System-Menu/scripts/bluetooth --status")
-(defpoll bluetooth-class :interval "1s" "System-Menu/scripts/bluetooth --class")
-(defpoll bluetooth-battery :interval "1s" "System-Menu/scripts/bluetooth --battery")
-(defpoll airplane-icon :interval "1s" "System-Menu/scripts/airplane --icon")
-(defpoll airplane-status :interval "1s" "System-Menu/scripts/airplane --status")
-(defpoll dnd-status :interval "1s" "System-Menu/scripts/dnd --status")
-(defpoll dnd-icon :interval "1s" "System-Menu/scripts/dnd --icon")
-(defpoll volume-status :interval "1s" "System-Menu/scripts/volume --status")
-(defpoll volume-icon :interval "1s" "System-Menu/scripts/volume --icon")
-(defpoll image :interval "100h" "System-Menu/scripts/details --image")
-(defpoll name :interval "100h" "System-Menu/scripts/details --name")
-(defpoll battery-icon :interval "5s" "System-Menu/scripts/battery -i")
-(defpoll battery-label :interval "5s" "System-Menu/scripts/battery -l")
-(defpoll battery-value :interval "5s" "System-Menu/scripts/battery -v")
-(defpoll battery-class :interval "1s" "System-Menu/scripts/battery -c")
-(defpoll battery-time :interval "1s" "System-Menu/scripts/battery -t")
-; (defpoll gcal :interval "20m" "System-Menu/scripts/gcal --update-cache &")
-; (deflisten gcal-time :initial "None" "System-Menu/scripts/gcal --time")
-; (deflisten gcal-event :initial "None" "System-Menu/scripts/gcal --event")
-(defpoll vpn-icon :interval "1s" "System-Menu/scripts/nordvpn --icon")
-(defpoll vpn-status :interval "1s" "System-Menu/scripts/nordvpn --status")
-(defpoll vpn-class :interval "1s" "System-Menu/scripts/nordvpn --class")
-(defpoll vpn-uptime :interval "1s" "System-Menu/scripts/nordvpn --uptime")
-(defpoll weather :interval "20m" "System-Menu/scripts/weather --getdata")
-(deflisten weather-icon :initial "Test" "System-Menu/scripts/weather --icon")
-(deflisten weather-temp :initial "None" "System-Menu/scripts/weather --temp")
-(deflisten weather-desc :initial "None" "System-Menu/scripts/weather --stat")
-(deflisten weather-color :initial "#7aa2f7" "System-Menu/scripts/weather --hex")
+; ;; variables
+; (defpoll network-icon :interval "1s" "System-Menu/scripts/network --icon")
+; (defpoll network-status :interval "1s" "System-Menu/scripts/network --status")
+; (defpoll network-class :interval "1s" "System-Menu/scripts/network --class")
+; (defpoll bluetooth-icon :interval "1s" "System-Menu/scripts/bluetooth --icon")
+; (defpoll bluetooth-status :interval "1s" "System-Menu/scripts/bluetooth --status")
+; (defpoll bluetooth-class :interval "1s" "System-Menu/scripts/bluetooth --class")
+; (defpoll bluetooth-battery :interval "1s" "System-Menu/scripts/bluetooth --battery")
+; (defpoll airplane-icon :interval "1s" "System-Menu/scripts/airplane --icon")
+; (defpoll airplane-status :interval "1s" "System-Menu/scripts/airplane --status")
+; (defpoll dnd-status :interval "1s" "System-Menu/scripts/dnd --status")
+; (defpoll dnd-icon :interval "1s" "System-Menu/scripts/dnd --icon")
+; (defpoll volume-status :interval "1s" "System-Menu/scripts/volume --status")
+; (defpoll volume-icon :interval "1s" "System-Menu/scripts/volume --icon")
+; (defpoll image :interval "100h" "System-Menu/scripts/details --image")
+; (defpoll name :interval "100h" "System-Menu/scripts/details --name")
+; ; (defpoll gcal :interval "20m" "System-Menu/scripts/gcal --update-cache &")
+; ; (deflisten gcal-time :initial "None" "System-Menu/scripts/gcal --time")
+; ; (deflisten gcal-event :initial "None" "System-Menu/scripts/gcal --event")
+; (defpoll vpn-icon :interval "1s" "System-Menu/scripts/nordvpn --icon")
+; (defpoll vpn-status :interval "1s" "System-Menu/scripts/nordvpn --status")
+; (defpoll vpn-class :interval "1s" "System-Menu/scripts/nordvpn --class")
+; (defpoll vpn-uptime :interval "1s" "System-Menu/scripts/nordvpn --uptime")
+; (defpoll weather :interval "20m" "System-Menu/scripts/weather --getdata")
+; (deflisten weather-icon :initial "Test" "System-Menu/scripts/weather --icon")
+; (deflisten weather-temp :initial "None" "System-Menu/scripts/weather --temp")
+; (deflisten weather-desc :initial "None" "System-Menu/scripts/weather --stat")
+; (deflisten weather-color :initial "#7aa2f7" "System-Menu/scripts/weather --hex")
 
 
 ;; notifications
-(deflisten notifications-cards "Main/scripts/logger.zsh subscribe")
+; (deflisten notifications-cards "Main/scripts/logger.zsh subscribe")
 ; (defpoll notifications-crits :interval "1s" "Main/scripts/logger.zsh crits")
 
 ;; for sliders
@@ -42,64 +37,69 @@
 (defpoll volume-slider-indicator :interval "0.5s" "System-Menu/scripts/sliders/volume-slider --icon")
 (defpoll brightness :interval "0.5s" "System-Menu/scripts/sliders/brightness-slider --value")
 (defpoll brightness-slider-indicator :interval "0.5s" "System-Menu/scripts/sliders/brightness-slider --icon")
+(defpoll battery-icon :interval "5s" "System-Menu/scripts/battery -i")
+(defpoll battery-label :interval "5s" "System-Menu/scripts/battery -l")
+(defpoll battery-value :interval "5s" "System-Menu/scripts/battery -v")
+(defpoll battery-class :interval "1s" "System-Menu/scripts/battery -c")
+(defpoll battery-time :interval "1s" "System-Menu/scripts/battery -t")
 
 
 (defwidget system []
   (box :class "main-window" :space-evenly "false" :orientation "h"
     (box :class "main-window-box" :orientation "h" :width 0 :hexpand "false" :vexpand "false" :space-evenly "false"
       (box :class "left-stuff-box" :space-evenly "false" :orientation "v" :halign "start"
-        (box :orientation "v" :space-evenly "false" :class "main-system-box" :height 550
-      (box :orientation "h" :class "top-items-box" :space-evenly "false"
-            (box :class "menu-profile-items-box" :space-evenly "false" :spacing 15 :halign "start"
-              (box :style "background-image: url('${image}');" :class "menu-profile-image")
-              (label :class "menu-profile-name" :text name :valign "center"))
-            (box :class "right-items-box" :space-evenly "false" :spacing 10
-              (button :tooltip "Open Settings" :class "menu-settings" :onclick "System-Menu/scripts/launch settings" "漣")
-              (button :tooltip "Open Explorer" :class "color-picker" :onclick "System-Menu/scripts/launch explorer" "ﱮ")
-              (button :tooltip "Exit" :class "menu-exit" :onclick "System-Menu/scripts/launch exit" "")
-              (button :tooltip "Enter powermenu" :class "menu-power" :onclick "System-Menu/scripts/launch powermenu" "")))
-          (box :orientation "h" :class "first-row-system" :hexpand "false" :vexpand "false"
-            (box :orientation "h" :class "main-wifi-box ${network-class == "on" ? "main-wifi-box-on" : "main-wifi-box-off"}" :space-evenly "false"
-              (button :class "main-wifi-button ${network-class == "on" ? "main-wifi-button-on" : "main-wifi-button-off"}" :onclick "System-Menu/scripts/network --toggle" "${network-icon}")
-              (box :class "wifi-labels-box" :orientation "v" :space-evenly "false" :spacing 5 :width 10
-                (button :halign "start" :class "wifi-label-button ${network-class == "on" ? "wifi-label-button-on" : "wifi-label-button-off"}" :onclick "System-Menu/scripts/network --toggle" "Wi-Fi")
-                (label :class "wifi-status-button ${network-class == "on" ? "wifi-status-button-on" : "wifi-status-button-off"}" :limit-width "10" :text "${network-status}"))
-              (box :class "wifi-buttons-box" :orientation "h" :space-evenly "false"
-                (label :class "seperator" :text "")
-                (button :class "arrow" :onclick "System-Menu/scripts/launch wifi" "漣 ")))
-            (box :orientation "h" :class "main-bluetooth-box ${bluetooth-class == "connected" ? "main-bluetooth-box-on" : "main-bluetooth-box-off"}" :space-evenly "false"
-              (button :tooltip bluetooth-battery :class "main-bluetooth-button ${bluetooth-class == "connected" ? "main-bluetooth-button-on" : "main-bluetooth-button-off"}" :onclick "System-Menu/scripts/bluetooth --toggle" "${bluetooth-icon}")
-              (box :class "bluetooth-labels-box" :orientation "v" :space-evenly "false" :spacing 5 :width 165
-                (button :halign "start" :tooltip bluetooth-battery :class "bluetooth-label-button ${bluetooth-class == "󰂯" ? "bluetooth-label-button-on" : "bluetooth-label-button-off"}" :onclick "System-Menu/scripts/bluetooth --toggle" "Bluetooth")
-                (label :halign "start" :tooltip bluetooth-battery :class "bluetooth-status-button ${bluetooth-class == "󰂯" ? "bluetooth-state-button-on" : "bluetooth-state-button-off"}" :limit-width "8" :text "${bluetooth-status}"))
-              (box :class "bluetooth-buttons-box" :orientation "h" :space-evenly "false"
-                (label :class "seperator" :text "")
-                (button :class "arrow" :onclick "System-Menu/scripts/launch bluetooth" "漣")))
-            (box :orientation "h" :class "main-airplane-box ${airplane-icon == "" ? "main-airplane-box-on" : "main-airplane-box-off"}" :space-evenly "false"
-              (button :class "main-airplane-button ${airplane-icon == "" ? "main-airplane-button-on" : "main-airplane-button-off"}" :style "color: ${weather-color}":onclick "System-Menu/scripts/launch weather" "${weather-icon}${weather}")
-              (box :class "airplane-labels-box" :orientation "v" :space-evenly "false" :spacing 5
-                (button :halign "start" :class "airplane-label-button ${airplane-icon == "" ? "airplane-label-button-on" : "airplane-label-button-off"}" :onclick "System-Menu/scripts/launch weather" "${weather-desc}")
-                (button :halign "start" :class "airplane-status-button ${airplane-icon == "" ? "airplane-status-button-on" : "airplane-status-button-off"}" :onclick "System-Menu/scripts/launch weather" "${weather-temp}"))))
-          (box :orientation "h" :class "second-row-system" :hexpand "false" :vexpand "false"
-            (box :orientation "h" :class "main-volume-box ${volume-icon == "墳" ? "main-volume-box-on" : "main-volume-box-off"}" :space-evenly "false"
-              (button :class "main-volume-button ${volume-icon == "墳" ? "main-volume-button-on" : "main-volume-button-off"}" :onclick "System-Menu/scripts/volume --toggle" "${volume-icon}")
-              (box :class "volume-labels-box" :orientation "v" :space-evenly "false" :spacing 5 :width 165 
-                (button :halign "start" :class "volume-label-button ${volume-icon == "墳" ? "volume-label-button-on" : "volume-label-button-off"}" :onclick "System-Menu/scripts/volume --toggle" "Sound")
-                (button :halign "start" :class "volume-status-button ${volume-icon == "墳" ? "volume-status-button-on" : "volume-status-button-off"}" :onclick "System-Menu/scripts/volume --toggle" "${volume-status}"))
-              (box :class "volume-buttons-box" :orientation "h" :space-evenly "false"
-                (label :class "seperator" :text "")
-                (button :class "arrow" :onclick "System-Menu/scripts/launch volume" "漣")))
-            (box :orientation "h" :class "main-dnd-box ${dnd-icon == "" ? "main-dnd-box-on" : "main-dnd-box-off"}" :space-evenly "false"
-              (button :class "main-dnd-button ${dnd-icon == "" ? "main-dnd-button-on" : "main-dnd-button-off"}" :onclick "System-Menu/scripts/dnd --toggle" "${dnd-icon}")
-              (box :class "dnd-labels-box" :orientation "v" :space-evenly "false" :spacing 5
-                (button :halign "start" :class "dnd-label-button ${dnd-icon == "" ? "dnd-label-button-on" : "dnd-label-button-off"}" :onclick "System-Menu/scripts/dnd --toggle" "Do Not Disturb")
-                (button :halign "start" :class "dnd-status-button ${dnd-icon == "" ? "dnd-state-button-on" : "dnd-state-button-off"}" :onclick "System-Menu/scripts/dnd --toggle" "${dnd-status}")))
-            (box :orientation "h" :class "main-redshift-box ${vpn-class == "on" ? "main-redshift-box-on" : "main-redshift-box-off"}" :space-evenly "false"
-              (button :class "main-redshift-button ${vpn-class == "on" ? "main-redshift-button-on" : "main-redshitft-button-off"}" :onclick "System-Menu/scripts/nordvpn --toggle" "${vpn-icon}")
-              (box :class "redshift-labels-box" :orientation "v" :space-evenly "false" :spacing 5
-                (button :halign "start" :class "redshift-label-button ${vpn-class == "on" ? "redshift-label-button-on" : "redshitft-label-button-off"}" :onclick "System-Menu/scripts/launch gcal" "VPN ${vpn-status}")
-                (label :halign "start" :class "redshift-status-button ${vpn-class == "on" ? "redshift-status-button-on" : "redshitft-status-button-off"}" :limit-width "15" :text "${vpn-uptime}"))
-              ))
+        (box :orientation "v" :space-evenly "false" :class "main-system-box" :height 10
+      ; (box :orientation "h" :class "top-items-box" :space-evenly "false"
+      ;       (box :class "menu-profile-items-box" :space-evenly "false" :spacing 15 :halign "start"
+      ;         (box :style "background-image: url('${image}');" :class "menu-profile-image")
+      ;         (label :class "menu-profile-name" :text name :valign "center"))
+      ;       (box :class "right-items-box" :space-evenly "false" :spacing 10
+      ;         (button :tooltip "Open Settings" :class "menu-settings" :onclick "System-Menu/scripts/launch settings" "漣")
+      ;         (button :tooltip "Open Explorer" :class "color-picker" :onclick "System-Menu/scripts/launch explorer" "ﱮ")
+      ;         (button :tooltip "Exit" :class "menu-exit" :onclick "System-Menu/scripts/launch exit" "")
+      ;         (button :tooltip "Enter powermenu" :class "menu-power" :onclick "System-Menu/scripts/launch powermenu" "")))
+          ; (box :orientation "h" :class "first-row-system" :hexpand "false" :vexpand "false"
+          ;   (box :orientation "h" :class "main-wifi-box ${network-class == "on" ? "main-wifi-box-on" : "main-wifi-box-off"}" :space-evenly "false"
+          ;     (button :class "main-wifi-button ${network-class == "on" ? "main-wifi-button-on" : "main-wifi-button-off"}" :onclick "System-Menu/scripts/network --toggle" "${network-icon}")
+          ;     (box :class "wifi-labels-box" :orientation "v" :space-evenly "false" :spacing 5 :width 10
+          ;       (button :halign "start" :class "wifi-label-button ${network-class == "on" ? "wifi-label-button-on" : "wifi-label-button-off"}" :onclick "System-Menu/scripts/network --toggle" "Wi-Fi")
+          ;       (label :class "wifi-status-button ${network-class == "on" ? "wifi-status-button-on" : "wifi-status-button-off"}" :limit-width "10" :text "${network-status}"))
+          ;     (box :class "wifi-buttons-box" :orientation "h" :space-evenly "false"
+          ;       (label :class "seperator" :text "")
+          ;       (button :class "arrow" :onclick "System-Menu/scripts/launch wifi" "漣 ")))
+          ;   (box :orientation "h" :class "main-bluetooth-box ${bluetooth-class == "connected" ? "main-bluetooth-box-on" : "main-bluetooth-box-off"}" :space-evenly "false"
+          ;     (button :tooltip bluetooth-battery :class "main-bluetooth-button ${bluetooth-class == "connected" ? "main-bluetooth-button-on" : "main-bluetooth-button-off"}" :onclick "System-Menu/scripts/bluetooth --toggle" "${bluetooth-icon}")
+          ;     (box :class "bluetooth-labels-box" :orientation "v" :space-evenly "false" :spacing 5 :width 165
+          ;       (button :halign "start" :tooltip bluetooth-battery :class "bluetooth-label-button ${bluetooth-class == "󰂯" ? "bluetooth-label-button-on" : "bluetooth-label-button-off"}" :onclick "System-Menu/scripts/bluetooth --toggle" "Bluetooth")
+          ;       (label :halign "start" :tooltip bluetooth-battery :class "bluetooth-status-button ${bluetooth-class == "󰂯" ? "bluetooth-state-button-on" : "bluetooth-state-button-off"}" :limit-width "8" :text "${bluetooth-status}"))
+          ;     (box :class "bluetooth-buttons-box" :orientation "h" :space-evenly "false"
+          ;       (label :class "seperator" :text "")
+          ;       (button :class "arrow" :onclick "System-Menu/scripts/launch bluetooth" "漣")))
+          ;   (box :orientation "h" :class "main-airplane-box ${airplane-icon == "" ? "main-airplane-box-on" : "main-airplane-box-off"}" :space-evenly "false"
+          ;     (button :class "main-airplane-button ${airplane-icon == "" ? "main-airplane-button-on" : "main-airplane-button-off"}" :style "color: ${weather-color}":onclick "System-Menu/scripts/launch weather" "${weather-icon}${weather}")
+          ;     (box :class "airplane-labels-box" :orientation "v" :space-evenly "false" :spacing 5
+          ;       (button :halign "start" :class "airplane-label-button ${airplane-icon == "" ? "airplane-label-button-on" : "airplane-label-button-off"}" :onclick "System-Menu/scripts/launch weather" "${weather-desc}")
+          ;       (button :halign "start" :class "airplane-status-button ${airplane-icon == "" ? "airplane-status-button-on" : "airplane-status-button-off"}" :onclick "System-Menu/scripts/launch weather" "${weather-temp}"))))
+          ; (box :orientation "h" :class "second-row-system" :hexpand "false" :vexpand "false"
+          ;   (box :orientation "h" :class "main-volume-box ${volume-icon == "墳" ? "main-volume-box-on" : "main-volume-box-off"}" :space-evenly "false"
+          ;     (button :class "main-volume-button ${volume-icon == "墳" ? "main-volume-button-on" : "main-volume-button-off"}" :onclick "System-Menu/scripts/volume --toggle" "${volume-icon}")
+          ;     (box :class "volume-labels-box" :orientation "v" :space-evenly "false" :spacing 5 :width 165 
+          ;       (button :halign "start" :class "volume-label-button ${volume-icon == "墳" ? "volume-label-button-on" : "volume-label-button-off"}" :onclick "System-Menu/scripts/volume --toggle" "Sound")
+          ;       (button :halign "start" :class "volume-status-button ${volume-icon == "墳" ? "volume-status-button-on" : "volume-status-button-off"}" :onclick "System-Menu/scripts/volume --toggle" "${volume-status}"))
+          ;     (box :class "volume-buttons-box" :orientation "h" :space-evenly "false"
+          ;       (label :class "seperator" :text "")
+          ;       (button :class "arrow" :onclick "System-Menu/scripts/launch volume" "漣")))
+          ;   (box :orientation "h" :class "main-dnd-box ${dnd-icon == "" ? "main-dnd-box-on" : "main-dnd-box-off"}" :space-evenly "false"
+          ;     (button :class "main-dnd-button ${dnd-icon == "" ? "main-dnd-button-on" : "main-dnd-button-off"}" :onclick "System-Menu/scripts/dnd --toggle" "${dnd-icon}")
+          ;     (box :class "dnd-labels-box" :orientation "v" :space-evenly "false" :spacing 5
+          ;       (button :halign "start" :class "dnd-label-button ${dnd-icon == "" ? "dnd-label-button-on" : "dnd-label-button-off"}" :onclick "System-Menu/scripts/dnd --toggle" "Do Not Disturb")
+          ;       (button :halign "start" :class "dnd-status-button ${dnd-icon == "" ? "dnd-state-button-on" : "dnd-state-button-off"}" :onclick "System-Menu/scripts/dnd --toggle" "${dnd-status}")))
+          ;   (box :orientation "h" :class "main-redshift-box ${vpn-class == "on" ? "main-redshift-box-on" : "main-redshift-box-off"}" :space-evenly "false"
+          ;     (button :class "main-redshift-button ${vpn-class == "on" ? "main-redshift-button-on" : "main-redshitft-button-off"}" :onclick "System-Menu/scripts/nordvpn --toggle" "${vpn-icon}")
+          ;     (box :class "redshift-labels-box" :orientation "v" :space-evenly "false" :spacing 5
+          ;       (button :halign "start" :class "redshift-label-button ${vpn-class == "on" ? "redshift-label-button-on" : "redshitft-label-button-off"}" :onclick "System-Menu/scripts/launch gcal" "VPN ${vpn-status}")
+          ;       (label :halign "start" :class "redshift-status-button ${vpn-class == "on" ? "redshift-status-button-on" : "redshitft-status-button-off"}" :limit-width "15" :text "${vpn-uptime}"))
+          ;     ))
           (box :orientation "v" :class "sliders-system" :hexpand "false" :vexpand "false" :spacing 30
             (box :orientation "h" :class "volume-slider-stuff" :space-evenly "false"
               (button :onclick "amixer set Master toggle" :class "volume-slider-icon" "${volume-slider-indicator}")
@@ -111,7 +111,7 @@
                 :min 0
                 :marks true
               :onchange "amixer set Master {}% --quiet")
-              (button :onclick "System-Menu/scripts/launch volume" :class "volume-slider-button" "漣"))
+              (label :class "volume-slider-button" :show-truncated false :text "${volume}%"))
             (box :orientation "h" :class "brightness-slider-stuff" :space-evenly "false"
               (button :class "brightness-slider-icon" "${brightness-slider-indicator}")
               (scale :class "brightness-slider"
@@ -121,9 +121,9 @@
                 :value {brightness == "" ? 0 : brightness}
                 :width 663
               :onchange "brightnessctl --quiet s {}%")
-              (button :onclick "System-Menu/scripts/launch display" :class "brightness-slider-button" "漣"))
+              (label :class "brightness-slider-button" :show-truncated false :text "${brightness}%"))
             (box :orientation "h" :class "brightness-slider-stuff" :space-evenly "false"
-              (button :class "battery-icon" :tooltip "${battery-time}" "${battery-icon}")
+              (label :class "battery-icon" :tooltip "${battery-time}" :show-truncated false :text "${battery-icon}")
               (scale :class "battery-slider"
                 :tooltip "${battery-time}"
                 :orientation "h"
@@ -132,78 +132,78 @@
                 :value {battery-value == "" ? 0 : battery-value}
                 :width 653)
               ; :onchange "brightnessctl --quiet s {}%")
-              (label :class "battery-slider-button" :tooltip "${battery-time}" :text "${battery-label}")))
+              (label :class "battery-slider-button" :show-truncated false :tooltip "${battery-time}" :text "${battery-label}")))
           ; (box :orientation "h" :space-evenly "true" :class "bottom-items-box"
           ;   (box :orientation "h" :space-evenly "false" :class "battery-box" :halign "start"
           ;     (label :class "battery-icon ${battery-class == "" ? "battery-icon-charging" : "battery-icon-discharging"}" :text "${battery-icon}")
           ;     (label :class "battery-percentage" :valign "end" :text "${battery-label}"))
             ; (box :class "power-profiles-box" :space-evenly "false" :halign "center"
-              ;     (label :class "balanced-icon" :text "龍aa")
-              ;     (button :class "profile-switcher" :onclick "System-Menu/scripts/power-profile --toggle" :tooltip "${profiles-mode}" "${profiles-icon}")
-              ;     (label :class "performance-icon" :text "龍"))
+            ;       (label :class "balanced-icon" :text "龍aa")
+            ;       (button :class "profile-switcher" :onclick "System-Menu/scripts/power-profile --toggle" :tooltip "${profiles-mode}" "${profiles-icon}")
+            ;       (label :class "performance-icon" :text "龍"))
             ; (box :class "tips-main-box" :halign "end" :space-evenly "false"
-              ;     (eventbox :cursor "pointer"
-                ;         (button :class "tips-toggler" :onclick "System-Menu/scripts/tips/toggle-tips --toggle" "${tips-icon}  ${tips-status}")))
-          ;)
-        ))
-      (box :class "seperator-box" :width 5 :space-evenly "false" :halign "center" :hexpand "false" :vexpand "false")
-      (box :class "right-stuff-box" :space-evenly "false" :orientation "v" :halign "end"
-        (box :class "notifications-box" :space-evenly "false" :orientation "v"
-          (box :orientation "v"
+            ;       (eventbox :cursor "pointer"
+            ;             (button :class "tips-toggler" :onclick "System-Menu/scripts/tips/toggle-tips --toggle" "${tips-icon}  ${tips-status}")))
+          ; )
+        )))))
+      ; (box :class "seperator-box" :width 5 :space-evenly "false" :halign "center" :hexpand "false" :vexpand "false")
+      ; (box :class "right-stuff-box" :space-evenly "false" :orientation "v" :halign "end"
+      ;   (box :class "notifications-box" :space-evenly "false" :orientation "v"
+      ;     (box :orientation "v"
             
-            :space-evenly "false"
-            :class "notification-layout-box"
-            (box :space-evenly "false"
-              :class "notification-headers"
-              (label :text "Notifications"
-                :class "notification-headers-label"
-              :halign "center"))
-            (literal :content notifications-cards :class "notification-literal")
-            (button :onclick "Main/scripts/logger.zsh clear" :halign "end" :class "notification-headers-clear" "Clear All" )))))))
+      ;       :space-evenly "false"
+      ;       :class "notification-layout-box"
+      ;       (box :space-evenly "false"
+      ;         :class "notification-headers"
+      ;         (label :text "Notifications"
+      ;           :class "notification-headers-label"
+      ;         :halign "center"))
+      ;       (literal :content notifications-cards :class "notification-literal")
+      ;       (button :onclick "Main/scripts/logger.zsh clear" :halign "end" :class "notification-headers-clear" "Clear All" )))))))
 
-(defwidget notification-card [?class summary body image ?SL ?M ?L ?R application]
-  (eventbox :onmiddleclick M
-    :onclick L
-    :onrightclick R
-    :class "notification-card-eventbox"
-    (box :space-evenly false :orientation "v"
-      (box :space-evenly "true" :orientation "h" :class "notification-card-header-box"
-        (label :class "notification-app-name" :text "${application}" :halign "start")
-        (button :onclick "Main/scripts/logger.zsh rm_id ${SL}"
-          :class "notification-card-notify-close" :halign "end"
-          (label :text "" :tooltip "Remove this notification.")))
-      (box :space-evenly "false" :orientation "h"
-        (box :class "notification-image" :style "background-image: url(\"${image}\");")
-        (box :orientation "vertical"
-          :class class
-          :space-evenly false
-          :hexpand true
-          :class "notification-card-box"
+; (defwidget notification-card [?class summary body image ?SL ?M ?L ?R application]
+;   (eventbox :onmiddleclick M
+;     :onclick L
+;     :onrightclick R
+;     :class "notification-card-eventbox"
+;     (box :space-evenly false :orientation "v"
+;       (box :space-evenly "true" :orientation "h" :class "notification-card-header-box"
+;         (label :class "notification-app-name" :text "${application}" :halign "start")
+;         (button :onclick "Main/scripts/logger.zsh rm_id ${SL}"
+;           :class "notification-card-notify-close" :halign "end"
+;           (label :text "" :tooltip "Remove this notification.")))
+;       (box :space-evenly "false" :orientation "h"
+;         (box :class "notification-image" :style "background-image: url(\"${image}\");")
+;         (box :orientation "vertical"
+;           :class class
+;           :space-evenly false
+;           :hexpand true
+;           :class "notification-card-box"
           
-          (box :space-evenly false
-            (label :limit-width 25
-              :wrap true
-              :text summary
-              :class "notification-summary"
-              :halign "start"
-            :hexpand true))
-          (label :limit-width 30
-            :wrap true
-            :text body
-            :halign "start"
-          :class "notification-body"))))))
+;           (box :space-evenly false
+;             (label :limit-width 25
+;               :wrap true
+;               :text summary
+;               :class "notification-summary"
+;               :halign "start"
+;             :hexpand true))
+;           (label :limit-width 30
+;             :wrap true
+;             :text body
+;             :halign "start"
+;           :class "notification-body"))))))
 
 ;; window
 (defwindow system-menu
   :windowtype "normal"
   :wm-ignore true
   :monitor 0
-  :geometry (geometry :width 100 :height 100 :y 58 :x 345)
+  :geometry (geometry :width 100 :height 100 :y 58 :x 1110)
   (system))
 
-(defwindow tips
-  :windowtype "normal"
-  :wm-ignore true
-  :monitor 0
-  :geometry (geometry :x 76 :width 810 :height 100 :y 580 :x 1050)
-  (tips))
+; (defwindow tips
+;   :windowtype "normal"
+;   :wm-ignore true
+;   :monitor 0
+;   :geometry (geometry :x 76 :width 810 :height 100 :y 580 :x 1050)
+;   (tips))
